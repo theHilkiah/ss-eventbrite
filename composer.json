@@ -1,0 +1,15 @@
+{
+    "name": "thehilkiah/ss-eventbrite",
+    "description": "EventBrite API for SilverStripe",
+    "license": "MIT",
+    "authors": [{
+        "name": "Hilkiah Makemo",
+        "email": "hilmak01@gmail.com"
+    }],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "SS_EventBrite\\": "src/"
+        }
+    }
+}
