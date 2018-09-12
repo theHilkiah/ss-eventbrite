@@ -6,7 +6,8 @@ namespace SS_EventBrite;
 
 function createAuthorizeUrl($client_key)
 {
-    return EVENTBRITE_OAUTH_BASE . 'authorize?response_type=code&client_id=' . $client_key;
+    $event_base = getenv('EVENTBRITE_OAUTH_BASE', EVENTBRITE_OAUTH_BASE);
+    return $event_base . 'authorize?response_type=code&client_id=' . $client_key;
 }
 
 function handshake($code, $client_secret, $app_key)

@@ -22,9 +22,9 @@ class HttpClient extends AccessMethods
      *
      * @param string $token the user's auth token.
      */
-    public function __construct($token)
+    public function __construct($token = null)
     {
-        $this->token = $token;
+        $this->token = getenv('SS_EVENTBRINTE_TOKEN', $token);
     }
     public function get($path, array $expand = array())
     {
@@ -53,8 +53,9 @@ class HttpClient extends AccessMethods
                 'ignore_errors' => true
             )
         );
+        $api_base = getenv('EVENTBRITE_APIv3_BASE', self::EVENTBRITE_APIv3_BASE);
 
-        $url = self::EVENTBRITE_APIv3_BASE . $path . '?token=' . $this->token;
+        $url = $api_base . $path . '?token=' . $this->token;
 
         if (!empty($expand)) {
             $expand_str = join(',', $expand);
